@@ -1,0 +1,13 @@
+set pagination off
+set logging file output-gdb.txt
+set logging on
+
+b 59 if I.i % 5 == 0
+commands
+    printf "@@@ %d %d %d %d\n", I.start, I.stop, I.step, I.i
+    c
+end
+
+r 1 12
+q
+

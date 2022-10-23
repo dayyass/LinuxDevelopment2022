@@ -1,0 +1,17 @@
+set pagination off
+set logging file output-gdb.txt
+set logging on
+
+set $cnt = 0
+b 59
+commands
+    set ++$cnt
+    if 28 <= $cnt && $cnt <= 35
+        printf "@@@ %d %d %d %d\n", I.start, I.stop, I.step, I.i
+    end
+    c
+end
+
+r -100 100 3
+q
+
